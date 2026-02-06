@@ -55,15 +55,15 @@ The application will:
 I implemented a **queue-based rate limiter** to ensure strict compliance with the 1 req/sec constraint:
 
 - **Queue System:** All API requests are added to a queue and processed sequentially
-- **Precise Timing:** Before each request, the system calculates the exact delay needed to maintain 1000ms gaps
-- **Smart Scheduling:** Uses `Date.now()` to track the last request time and dynamically calculates wait times
+- **Precise Timing:** Tracks completion time of each request to ensure accurate 1000ms+ gaps accounting for network latency
+- **Smart Scheduling:** Uses `Date.now()` after each request completes to dynamically calculate wait times
 - **No Race Conditions:** Single-threaded queue processing ensures no requests overlap
 
 **Implementation:** [`src/services/rateLimiter.js`](src/services/rateLimiter.js)
 
 ```javascript
 // Pseudocode flow:
-Queue[task1, task2, ...] → Calculate delay → Wait → Execute → Update lastRequestTime → Next
+Queue[task1, task2, ...] → Calculate delay → Wait → Execute → Record completion time → Next
 ```
 
 ### Concurrency Handling
@@ -72,7 +72,7 @@ Instead of parallel requests (which would violate rate limits), I use **controll
 
 1. All 50 batches are queued upfront
 2. The rate limiter processes them one-by-one
-3. Each batch waits exactly until 1000ms has passed since the previous request
+3. Each batch waits until 1000ms has passed since the previous request completed
 4. Progress is tracked in real-time with a visual progress bar
 
 ### Batching Optimization
