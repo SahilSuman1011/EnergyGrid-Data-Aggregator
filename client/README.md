@@ -2,7 +2,7 @@
 
 A robust Node.js client application to fetch real-time telemetry data from 500 solar inverters while navigating strict API rate limits and security protocols.
 
-## 📋 Overview
+## Overview
 
 This application fetches telemetry data for 500 solar inverter devices from a legacy EnergyGrid API that enforces:
 
@@ -10,13 +10,13 @@ This application fetches telemetry data for 500 solar inverter devices from a le
 - **Batch Limit:** Maximum 10 devices per request
 - **Security:** MD5 signature authentication on every request
 
-## 🚀 Prerequisites
+## Prerequisites
 
 - **Node.js:** v14.0.0 or higher
 - **npm:** Node Package Manager
 - **Mock API Server:** Must be running on `http://localhost:3000`
 
-## 📦 Installation
+## Installation
 
 1. Navigate to the client directory:
 
@@ -29,7 +29,7 @@ This application fetches telemetry data for 500 solar inverter devices from a le
    npm install
    ```
 
-## ▶️ How to Run
+## How to Run
 
 **Important:** Ensure the mock API server is running before starting the client.
 
@@ -48,7 +48,7 @@ The application will:
 5. Save aggregated results to `./results/aggregated_data.json`
 6. Display summary statistics
 
-## 🏗️ Architecture & Approach
+## Architecture & Approach
 
 ### Rate Limiting Strategy
 
@@ -107,7 +107,7 @@ Robust error handling with automatic retry logic:
 
 **Implementation:** [`src/core/aggregator.js`](src/core/aggregator.js#L63-L87)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 client/
@@ -142,7 +142,7 @@ client/
 | **utils/logger.js**             | Structured logging with timestamps                       |
 | **utils/signatureGenerator.js** | MD5 signature for authentication                         |
 
-## 📊 Output
+## Output
 
 Results are saved to [`results/aggregated_data.json`](results/aggregated_data.json) with the following structure:
 
@@ -165,7 +165,7 @@ Results are saved to [`results/aggregated_data.json`](results/aggregated_data.js
 }
 ```
 
-## 🔍 Assumptions
+## Assumptions
 
 1. **Mock Server Availability:** The mock API server is running on `http://localhost:3000`
 2. **Network Stability:** Network connection is stable during execution
@@ -174,18 +174,18 @@ Results are saved to [`results/aggregated_data.json`](results/aggregated_data.js
 5. **No Partial Results:** All 500 devices must be fetched; partial results are not acceptable
 6. **Retry Strategy:** 3 retry attempts with 2-second delays is sufficient for transient failures
 
-## ✨ Features
+## Features
 
-- ✅ **100% Success Rate:** Successfully fetches all 500 devices
-- ✅ **Zero Rate Limit Violations:** No 429 errors during execution
-- ✅ **Automatic Retries:** Handles transient failures gracefully
-- ✅ **Progress Tracking:** Real-time progress bar with batch status
-- ✅ **Colored Logging:** Easy-to-read console output with timestamps
-- ✅ **Comprehensive Results:** Detailed summary with success/failure statistics
-- ✅ **Graceful Shutdown:** Handles SIGINT (Ctrl+C) cleanly
-- ✅ **Error Reporting:** Failed batches logged with details
+- **100% Success Rate:** Successfully fetches all 500 devices
+- **Zero Rate Limit Violations:** No 429 errors during execution
+- **Automatic Retries:** Handles transient failures gracefully
+- **Progress Tracking:** Real-time progress bar with batch status
+- **Colored Logging:** Easy-to-read console output with timestamps
+- **Comprehensive Results:** Detailed summary with success/failure statistics
+- **Graceful Shutdown:** Handles SIGINT (Ctrl+C) cleanly
+- **Error Reporting:** Failed batches logged with details
 
-## 🧪 Testing
+## Testing
 
 To verify the implementation:
 
@@ -203,11 +203,11 @@ To verify the implementation:
    ```
 
 3. Verify output:
-   - Check console for "✅ Data aggregation completed successfully!"
+   - Check console for "Data aggregation completed successfully!"
    - Verify `results/aggregated_data.json` exists
    - Confirm `successfulFetches: 500` in the output file
 
-## 📝 Code Quality
+## Code Quality
 
 - **Modular Design:** Clear separation between API logic, business logic, and utilities
 - **Single Responsibility:** Each class/module has one well-defined purpose
@@ -216,10 +216,10 @@ To verify the implementation:
 - **Documentation:** JSDoc comments on all public methods
 - **Consistent Style:** Uniform code formatting throughout
 
-## 👤 Author
+## Author
 
 **Sahil Suman**
 
-## 📄 License
+## License
 
 MIT

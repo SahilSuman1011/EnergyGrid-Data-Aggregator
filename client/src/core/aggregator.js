@@ -166,7 +166,7 @@ class DataAggregator {
    */
   displaySummary(data) {
     console.log('\n' + '='.repeat(60));
-    console.log('📊 AGGREGATION SUMMARY');
+    console.log('AGGREGATION SUMMARY');
     console.log('='.repeat(60));
     console.log(`Total Devices:        ${TOTAL_DEVICES}`);
     console.log(`Successfully Fetched: ${data.length}`);
@@ -195,7 +195,7 @@ class DataAggregator {
    */
   async run() {
     try {
-      Logger.info('🚀 Starting EnergyGrid Data Aggregator\n');
+      Logger.info('Starting EnergyGrid Data Aggregator\n');
 
       // Step 1: Test API connection
       Logger.info('Testing API connection...');
@@ -224,10 +224,10 @@ class DataAggregator {
       // Step 6: Display summary
       this.displaySummary(data);
 
-      Logger.success('✅ Data aggregation completed successfully!');
+      Logger.success('Data aggregation completed successfully!');
       
     } catch (error) {
-      Logger.error(`\n❌ Fatal error: ${error.message}`);
+      Logger.error(`\nFatal error: ${error.message}`);
       process.exit(1);
     }
   }
