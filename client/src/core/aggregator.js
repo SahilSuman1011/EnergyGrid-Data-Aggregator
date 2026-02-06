@@ -203,6 +203,9 @@ class DataAggregator {
       if (!isConnected) {
         throw new Error('Cannot connect to API. Please ensure the mock server is running.');
       }
+      
+      // Wait 1 second after connection test to ensure clean rate limiting for batch processing
+      await new Promise(resolve => setTimeout(resolve, 1000));
       console.log();
 
       // Step 2: Generate serial numbers
