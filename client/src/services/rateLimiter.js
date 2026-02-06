@@ -56,8 +56,9 @@ class RateLimiter {
 
       try {
         // Execute the task
-        this.lastRequestTime = Date.now();
         const result = await task();
+        // Update timestamp AFTER request completes to account for network latency
+        this.lastRequestTime = Date.now();
         resolve(result);
       } catch (error) {
         reject(error);
